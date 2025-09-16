@@ -53,6 +53,14 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Library-specific colors */
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+    --wallet: 43 74% 66%;
+    --wallet-foreground: 222.2 84% 4.9%;
+    --price: 25 95% 53%;
+    --price-foreground: 210 40% 98%;
   }
 
   .dark {
@@ -91,6 +99,14 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Dark mode library colors */
+    --success: 142 70% 45%;
+    --success-foreground: 222.2 84% 4.9%;
+    --wallet: 43 69% 58%;
+    --wallet-foreground: 222.2 84% 4.9%;
+    --price: 25 90% 48%;
+    --price-foreground: 210 40% 98%;
   }
 }
 
@@ -102,4 +118,28 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  .purchase-pulse {
+    @apply animate-pulse bg-success/20;
+  }
+  
+  .wallet-glow {
+    @apply shadow-lg shadow-wallet/20;
+  }
+  
+  .book-card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+}
+
+@keyframes purchase-success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); background-color: hsl(var(--success) / 0.2); }
+  100% { transform: scale(1); }
+}
+
+.animate-purchase {
+  animation: purchase-success 0.6s ease-in-out;
 }
